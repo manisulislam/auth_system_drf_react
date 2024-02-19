@@ -1,5 +1,6 @@
 import environ
 from pathlib import Path
+from datetime import timedelta
 env=environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -82,7 +83,22 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'accounts_app.User'
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
 
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -124,9 +140,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST_USER =env("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD =env("EMAIL_HOST_PASSWORD")
+# DEFAULT_FROM_EMAIL = 'noreply@example.com'
+# EMAIL_PORT = '2525'
+# EMAIL_USE_TLS = True
+
+# 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 EMAIL_HOST_USER =env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD =env("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = 'noreply@example.com'
-EMAIL_PORT = '2525'
-EMAIL_USE_TLS = True
+
+
