@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'social_accounts_app',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     
 ]
