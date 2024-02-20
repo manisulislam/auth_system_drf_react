@@ -29,7 +29,7 @@ def register_social_user(provider, email, first_name, last_name):
             }
         else:
             raise AuthenticationFailed({
-                detail=f"please, continue to log in with {user[0].auth_provider}"
+                "detail":f"please, continue to log in with {user[0].auth_provider}"
             })
     else:
         new_user={
