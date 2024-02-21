@@ -56,6 +56,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'drf_react_auth_backend.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
     "http://localhost:3000",
     "http://localhost:5173/"
 ]
@@ -100,8 +101,8 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=10),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "AUTH_HEADER_TYPES": ("Bearer",),
     
 }
